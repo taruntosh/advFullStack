@@ -9,6 +9,8 @@ import UseEffectExample3 from './components/UseEffectExample3';
 function App() {
   return (
     <div className="App">
+      {/* <UseEffectExample3 /> */}
+      {/* <PropsExample carBrand="Ford" /> */}
       <BabelExample />
       {/* <Counter />
       <UseEffectExample1 />

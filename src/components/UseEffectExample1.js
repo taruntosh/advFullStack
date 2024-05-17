@@ -4,9 +4,10 @@ const UseEffectExample1 = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    console.log(`count - ${count}`)
+    // console.log('count', count)
     document.title = `You clicked ${count} times`;
-  });
-
+  }, []);
   return (
     <div>
       <p>You clicked {count} times</p>

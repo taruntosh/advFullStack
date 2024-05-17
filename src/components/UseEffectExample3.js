@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 const UseEffectExample3 = () => {
-  // Initialize state to hold the posts
   const [posts, setPosts] = useState([]);
 
-  // effect functions can't be async, so declare the
-  // async function inside the effect, then call it
   useEffect(() => {
     async function fetchData() {
-      // Call fetch as usual
       const res = await fetch(
         "https://www.reddit.com/r/reactjs.json"
       );
