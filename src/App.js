@@ -1,23 +1,44 @@
-import './App.css';
-import BabelExample from './components/BabelExample';
-// import {Component, useEffect, useState } from 'react';
-import Counter from './components/Counter'
-import PropsExample from './components/PropsExample';
-import UseEffectExample1 from './components/UseEffectExample1'
-import UseEffectExample2 from './components/UseEffectExample2'
-import UseEffectExample3 from './components/UseEffectExample3';
+import { VStack, Text } from "@chakra-ui/react";
+import "./App.css";
+import { useState } from "react";
+import AddTodo from "./components/AddTodo";
+import TodoList from "./components/TodoList";
+
 function App() {
+  const todosList = [
+    { id: 1, text: "Buy eggs" },
+    { id: 2, text: "Walk the dog" },
+    { id: 3, text: "Watch a movie" },
+  ];
+
+  const [todos, setTodos] = useState(todosList);
+
+  function deleteTodo(id) {
+    // IMPLEMENT DELETE TODO
+  }
+
+  function addTodo(newTodo) {
+    // IMPLEMENT ADD TODOS
+  }
+
+  function editTodo(id, updatedTodo) {
+    // IMPLEMENT EDIT TODO
+    setTodos(updatedItem);
+  }
+
   return (
-    <div className="App">
-      {/* <UseEffectExample3 /> */}
-      {/* <PropsExample carBrand="Ford" /> */}
-      <BabelExample />
-      {/* <Counter />
-      <UseEffectExample1 />
-      <UseEffectExample2 /> */}
-      {/* <UseEffectExample3 /> */}
-      {/* <PropsExample carBrand="Ford" /> */}
-    </div>
+    <VStack p={5}>
+      <Text
+        bgGradient="linear(to-l, #7928CA,#FF0080)"
+        bgClip="text"
+        fontSize="6xl"
+        fontWeight="extrabold"
+      >
+        Todo App
+      </Text>
+      <TodoList todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
+      <AddTodo addTodo={addTodo} />
+    </VStack>
   );
 }
 
