@@ -23,13 +23,13 @@ function App() {
 
   function editTodo(id, updatedTodo) {
     // IMPLEMENT EDIT TODO
-    setTodos(updatedItem);
+    // setTodos(updatedItem);
   }
 
   return (
     <VStack p={5}>
       <Text
-        bgGradient="linear(to-l, #7928CA,#FF0080)"
+        bgGradient="red"
         bgClip="text"
         fontSize="6xl"
         fontWeight="extrabold"
