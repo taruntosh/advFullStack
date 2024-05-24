@@ -21,6 +21,7 @@ function AddTodo({ addTodo }) {
       id: nanoid(),
       text: value,
     };
+    debugger;
     addTodo(todo);
     setValue("");
   }

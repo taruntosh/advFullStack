@@ -15,15 +15,26 @@ function App() {
 
   function deleteTodo(id) {
     // IMPLEMENT DELETE TODO
+    const updatedTodoList = todos.filter(todo => {
+      return todo.id !== id
+    })
+    setTodos(updatedTodoList)
   }
 
   function addTodo(newTodo) {
+    const updatedTodoList = [...todos, newTodo];
+    setTodos(updatedTodoList)
+    debugger
     // IMPLEMENT ADD TODOS
   }
 
   function editTodo(id, updatedTodo) {
     // IMPLEMENT EDIT TODO
-    // setTodos(updatedItem);
+    const updatedTodoList = todos.map(todo => {
+      return todo.id === id ? updatedTodo : todo
+    });
+    debugger
+    setTodos(updatedTodoList)
   }
 
   return (

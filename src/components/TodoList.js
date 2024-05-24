@@ -28,22 +28,22 @@ function TodoList({ todos, deleteTodo, editTodo }) {
   }
 
   function handleEditClick(todo) {
-    // setIsOpen(true);
-    // setModalValue(todo);
-    // console.log(todo);
+    setIsOpen(true);
+    setModalValue(todo);
+    console.log(todo);
   }
 
   function handleEditInputChange(e, id) {
-    // setModalValue({ ...modalValue, text: e.target.value });
-    // console.log(modalValue, id);
+    setModalValue({ ...modalValue, text: e.target.value });
+    console.log(modalValue, id);
   }
 
   function handleEditSubmit(e) {
     e.preventDefault();
 
-    // editTodo(modalValue.id, modalValue);
-    // setModalValue("");
-    // setIsOpen(false);
+    editTodo(modalValue.id, modalValue);
+    setModalValue("");
+    setIsOpen(false);
   }
 
   return !todos.length ? (
