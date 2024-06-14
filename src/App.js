@@ -1,37 +1,49 @@
+import { useEffect, useState } from "react";
 import { VStack, Text } from "@chakra-ui/react";
+
 import "./App.css";
-import { useState } from "react";
 import AddTodo from "./components/AddTodo";
 import TodoList from "./components/TodoList";
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/",
   cache: new InMemoryCache(),
 });
 
-client
-  .query({
-    query: gql`
-    query ExampleQuery {
-      getAllTodos {
-        id
-        task
-        isCompleted
-      }
+const GET_TODOS = gql`
+  query ExampleQuery {
+    getAllTodos {
+      id
+      task
+      isCompleted
     }
-    `,
-  })
-  .then((result) => console.log(`result from graphql - ${JSON.stringify(result)}` ));
+  }
+`;
 
 function App() {
-  const todosList = [
-    { id: 1, text: "Buy eggs" },
-    { id: 2, text: "Walk the dog" },
-    { id: 3, text: "Watch a movie" },
-  ];
+  const [todos, setTodos] = useState([]);
 
-  const [todos, setTodos] = useState(todosList);
+  useEffect(() => {
+    client
+      .query({ query: GET_TODOS })
+      .then((result) => {
+        console.log(`result from graphql - ${JSON.stringify(result)}`);
+        const fetchedTodos = result.data.getAllTodos.map((todo) => ({
+          id: todo.id,
+          text: todo.task,
+          isCompleted: todo.isCompleted,
+        }));
+        setTodos(fetchedTodos);
+      })
+      .catch((error) => console.error("Error fetching todos:", error));
+  }, []);
 
   function deleteTodo(id) {
     // IMPLEMENT DELETE TODO
